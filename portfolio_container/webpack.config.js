@@ -39,6 +39,7 @@ module.exports = {
         skillsapp: "skillsapp@http://localhost:3002/remoteEntry.js",
         contactapp: "contactapp@http://localhost:3060/remoteEntry.js",
         experienceapp: "experienceapp@http://localhost:3061/remoteEntry.js",
+        todoapp: "todoapp@http://localhost:9090/remoteEntry.js",
       },
       shared: {'react': {singleton: true}, "react-dom": {singleton: true}},
     }),
