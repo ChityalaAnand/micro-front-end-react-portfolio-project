@@ -7,6 +7,7 @@ import SkillsApp from "skillsapp/App";
 import ContactApp from "contactapp/App";
 import ExperienceApp from "experienceapp/App";
 import ToDoApp from "todoapp/App";
+import ReactEmpCrud from "employeeApp/EmployeeApp";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
@@ -31,6 +32,7 @@ const App = () => {
                 <Nav.Link as={Link} to="/experience">Experience</Nav.Link>
                 <Nav.Link as={Link} to="/contact">Contact</Nav.Link>
                 <Nav.Link as={Link} to="/todo">ToDo</Nav.Link>
+                <Nav.Link as={Link} to="/reactempcrud">EMP CRUD</Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>
@@ -58,6 +60,7 @@ const App = () => {
               <Route path="/experience" element={<ExperienceApp/>}/>
               <Route path="/contact" element={<ContactApp/>}/>   
               <Route path="/todo" element={<ToDoApp/>}/>
+              <Route path="/reactempcrud" element={<ReactEmpCrud/>}/>
             </Routes>
           </Suspense>
         </Container>

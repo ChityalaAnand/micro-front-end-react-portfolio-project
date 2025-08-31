@@ -34,14 +34,15 @@ module.exports = {
     new ModuleFederationPlugin({
       name: "containerapp",
       remotes: {
-        aboutapp: "aboutapp@http://localhost:8080/remoteEntry.js",
+        aboutapp: "aboutapp@http://localhost:3051/remoteEntry.js",
         projectsapp: "projectsapp@http://localhost:3050/remoteEntry.js",
         skillsapp: "skillsapp@http://localhost:3002/remoteEntry.js",
         contactapp: "contactapp@http://localhost:3060/remoteEntry.js",
         experienceapp: "experienceapp@http://localhost:3061/remoteEntry.js",
         todoapp: "todoapp@http://localhost:9090/remoteEntry.js",
+        employeeApp:"employeeApp@http://localhost:3062/remoteEntry.js",
       },
-      shared: {'react': {singleton: true}, "react-dom": {singleton: true}},
+      shared: {'react': {singleton: true}, "react-dom": {singleton: true}, "react-router-dom": { singleton: true },},
     }),
     // new ExternalTemplateRemotesPlugin(),
     new HtmlWebpackPlugin({
