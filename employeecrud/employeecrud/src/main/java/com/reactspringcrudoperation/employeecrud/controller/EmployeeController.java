@@ -58,6 +58,29 @@ public class EmployeeController {
     	employeeRepository.deleteById(id);
     	return ResponseEntity.noContent().build();
     }
+    
+    @PutMapping("/{id}")
+    public ResponseEntity<Employee> updateEmployee(@PathVariable Long id, @RequestBody @Valid EmployeeDto employeeDto) {
+        Optional<Employee> optionalEmployee = employeeRepository.findById(id);
+
+        if (!optionalEmployee.isPresent()) {
+            return ResponseEntity.notFound().build();
+        }
+
+        Employee employee = optionalEmployee.get();
+        employee.setFirstName(employeeDto.getFirstName());
+        employee.setLastName(employeeDto.getLastName());
+        employee.setPhoneNumber(employeeDto.getPhoneNumber());
+        employee.setDateOfBirth(employeeDto.getDateOfBirth());
+        employee.setDepartment(employeeDto.getDepartment());
+        employee.setDesignation(employeeDto.getDesignation());
+        employee.setDateOfJoining(employeeDto.getDateOfJoining());
+        employee.setSalary(employeeDto.getSalary());
+        employee.setEmailId(employeeDto.getEmailId());
+        Employee updatedEmployee = employeeRepository.save(employee);
+
+        return ResponseEntity.ok(updatedEmployee);
+    }
 
 
 }

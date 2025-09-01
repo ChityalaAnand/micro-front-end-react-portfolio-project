@@ -43,10 +43,10 @@ const App = () => {
           minHeight: "90vh", display: "flex", flexDirection: "column",
           alignItems: "center", justifyContent: "center",
           textAlign: "center", position: "relative", zIndex: 2,}}>
-        <h2 style={{ fontStyle: "italic", fontSize: "2rem", color: "#ccc" }}>I’m a</h2>
-        <h1 style={{ fontSize: "4.5rem", fontWeight: "bold", color: "#00ffff" }}>FULL-STACK</h1>
-        <h1 style={{ fontSize: "4.5rem", fontWeight: "bold", color: "#ffffff" }}>DEVELOPER</h1>
-        <h1 style={{ fontSize: "4.5rem", fontWeight: "bold", color: "#ff007f" }}>SOFTWARE ENGINEER</h1>
+        <h2 style={{ fontStyle: "italic", fontSize: "8rem", color: "#ccc" }}>I’m a</h2>
+        <h1 style={{ fontSize: "6.5rem", fontWeight: "bold", color: "#00ffff" }}>JAVA FULL-STACK</h1>
+        <h1 style={{ fontSize: "6.5rem", fontWeight: "bold", color: "#ffffff" }}>DEVELOPER &</h1>
+        <h1 style={{ fontSize: "6.5rem", fontWeight: "bold", color: "#ff007f" }}>SOFTWARE ENGINEER</h1>
       </div>
 
 

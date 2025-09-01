@@ -1,12 +1,15 @@
 import React, { Component } from 'react'
 import EmployeeService from '../services/EmployeeService'
+import CreateEmployeeComponent from './CreateEmployeeComponent'
 
 export default class ListEmployeeComponent extends Component {
     constructor(props) {
         super(props)
 
         this.state = {
-            employees: []
+            employees: [],
+            showModal: false,
+            selectedEmployee: null,
         }
     }
 
@@ -36,6 +39,16 @@ export default class ListEmployeeComponent extends Component {
                 });
         }
     }
+
+    updateEmployee = (empId) => {
+        const emp = this.state.employees.find(e => e.empId === empId);
+        this.setState({ selectedEmployee: emp, showModal: true });
+    };
+
+    closeModal = () => {
+        this.setState({ showModal: false, selectedEmployee: null });
+        this.fetchEmployees(); // refresh list
+    };
     render() {
         return (
             <div>
@@ -50,6 +63,7 @@ export default class ListEmployeeComponent extends Component {
                                 <th>Phone Number</th>
                                 <th>Date Of Birth</th>
                                 <th>Department</th>
+                                <th>Designation</th>
                                 <th>Date Of Joining</th>
                                 <th>Salary</th>
                                 <th>EmailId</th>
@@ -66,6 +80,7 @@ export default class ListEmployeeComponent extends Component {
                                         <td>{employee.phoneNumber}</td>
                                         <td>{employee.dateOfBirth}</td>
                                         <td>{employee.department}</td>
+                                        <td>{employee.designation}</td>
                                         <td>{employee.dateOfJoining}</td>
                                         <td>{employee.salary}</td>
                                         <td>{employee.emailId}</td>
@@ -81,6 +96,13 @@ export default class ListEmployeeComponent extends Component {
                         </tbody>
                     </table>
                 </div>
+                {/* Show modal if editing */}
+                {this.state.showModal && (
+                    <CreateEmployeeComponent
+                        onClose={this.closeModal}
+                        existingEmployee={this.state.selectedEmployee}
+                    />
+                )}
             </div>
         )
     }

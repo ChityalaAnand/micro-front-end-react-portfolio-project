@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import EmployeeService from "../services/EmployeeService";
 
-const CreateEmployeeComponent = ({ onClose }) => {
+const CreateEmployeeComponent = ({ onClose, existingEmployee }) => {
   const navigate = useNavigate();
 
-  const [employee, setEmployee] = useState({
+  const [employee, setEmployee] = useState(
+    existingEmployee || {
     firstName: "",
     lastName: "",
     phoneNumber: "",
@@ -39,19 +40,25 @@ const CreateEmployeeComponent = ({ onClose }) => {
 
     try {
       setLoading(true);
-      await EmployeeService.createEmployee(employee);
-      alert("Employee saved successfully!");
+      if (employee.empId) {
+        // update case
+        await EmployeeService.updateEmployee(employee.empId, employee);
+        alert("Employee updated successfully!");
+      } else {
+        // create case
+        await EmployeeService.createEmployee(employee);
+        alert("Employee saved successfully!");
+      }
+
       onClose();
       navigate("/");
-      
     } catch (err) {
-      console.error("Error creating employee:", err);
+      console.error("Error saving employee:", err);
       setError(err.message);
     } finally {
       setLoading(false);
     }
   };
-
   return (
     <div className="modal-overlay" style={overlayStyle}>
       <div className="modal-content" style={modalStyle}>

@@ -3,7 +3,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import ListEmployeeComponent from './components/ListEmployeeComponent.jsx';
 import HeaderComponent from './components/HeaderComponent.jsx';
-import FooterComponent from './components/FooterComponent.jsx';
+//import FooterComponent from './components/FooterComponent.jsx';
 import CreateEmployeeComponent from './components/CreateEmployeeComponent.jsx';
 
 
@@ -21,7 +21,7 @@ function App() {
           </Routes>*/}
 
         </div>
-        <FooterComponent />
+        {/*<FooterComponent />*/}
       </div>
     </Router>
   );
